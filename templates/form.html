@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Enter Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        label {
+            color: white;
+            font-size: 16px;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            outline: none;
+        }
+        button {
+            width: 100%;
+            background: #4ca1af;
+            border: none;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #2c3e50;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 480px) {
+            body {
+                height: auto;
+                padding: 20px;
+            }
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            input, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ username }}!</h2>  <!-- Show logged-in username -->
+        <h2>Enter Your Details</h2>
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            
+            <label>Age:</label>
+            <input type="number" name="age" required>
+            
+            <label>Contact:</label>
+            <input type="number" name="Contact" required>
+            
+            <label>Address:</label>
+            <input type="text" name="Address" required>
+            
+            <label>Blood Group:</label>
+            <input type="text" name="blood_group" required>
+            
+            <button type="submit">Submit & Capture Image</button>
+        </form>
+    </div>
+</body>
+</html>

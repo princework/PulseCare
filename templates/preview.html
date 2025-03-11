@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 500px;
+            color: white;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .info {
+            text-align: left;
+            flex: 1;
+            font-size: 16px;
+        }
+        .image-box {
+            border: 2px solid white;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 160px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+        .sensor-data {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .error {
+            color: #ff4d4d;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 12px 20px;
+            background: #4ca1af;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>IOT Health Care Monitoring</h2>
+        <div class="content">
+            <div class="info">
+                <p><b>Patient Name:</b> {{ name }}</p>
+                <p><b>Age:</b> {{ age }}</p>
+                <p><b>Blood Group:</b> {{ blood_group }}</p>
+            </div>
+            <div class="image-box">
+                {% if image_path %}
+                    <img src="{{ image_path }}" alt="Captured Image">
+                {% else %}
+                    <p>No Image Captured</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Sensor Data Section -->
+        <div class="sensor-data">
+            {% if sensor_data %}
+                <p>Pulse Rate: {{ sensor_data.pulse }} BPM</p>
+                <p>Temperature: {{ sensor_data.temperature }} °C</p>
+            {% else %}
+                <p class="error">No sensors detected, no readings found. Connect your device to check results.</p>
+            {% endif %}
+        </div>
+
+        <a href="{{ url_for('download') }}" class="btn">Download PDF</a>
+    </div>
+</body>
+</html>

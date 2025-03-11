@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pulse Sensor Prompt</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        h2 { color: #007bff; }
+        .message { margin: 20px; font-size: 18px; }
+        .btn { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Place Your Finger on the Pulse Sensor</h2>
+    <p class="message">Currently, no sensors are connected.<br>Connect a device to check readings.</p>
+    <a href="{{ url_for('preview') }}"><button class="btn">Continue</button></a>
+</body>
+</html>
